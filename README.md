@@ -1,103 +1,170 @@
 # 🐾 Administrador de Mascotas
 
-Aplicación de escritorio desarrollada en **C# (.NET / Windows Forms)** como ejercicio práctico de **gestión de datos y bases de datos relacionales**.
-
-El proyecto implementa un **CRUD completo** y muestra **dos enfoques distintos de acceso a datos** dentro de una misma solución:
-ADO.NET clásico y DataSet tipado.
-
----
-
-## 📌 Descripción
-
-La aplicación permite administrar:
-
-* Animales
-* Razas (asociadas a animales)
-* Mascotas (asociadas a razas)
-
-Desde la interfaz se pueden realizar operaciones de alta, baja, modificación y consulta, mostrando los datos en grillas y formularios.
-
----
-
-## 🧱 Estructura de la solución
-
-La solución está compuesta por tres proyectos:
-
-### 📚 Biblioteca de Clases
-
-Contiene la lógica de negocio y el acceso a datos, utilizada por ambas aplicaciones.
-
-Clases principales:
-
-* `Animal`
-* `Raza`
-* `Mascota`
-* `CadenaConexion`
-
----
-
-### 🖥️ Mascotas (ADO.NET)
-
-Aplicación Windows Forms que accede a la base de datos utilizando ADO.NET clásico (`SqlConnection`, `SqlCommand`, `SqlDataReader`).
-
----
-
-### 🧩 Mascotas DS (DataSet)
-
-Aplicación Windows Forms con la misma funcionalidad, implementada utilizando DataSet tipado y TableAdapters.
-
-Ambas aplicaciones resuelven el mismo problema con enfoques distintos de acceso a datos.
-
----
-
-## 🗄️ Base de datos
-
-* Motor: SQL Server
-* Tipo: Relacional
-* Entidades: Animales, Razas y Mascotas
-
-Se utilizan vistas y stored procedures para las operaciones CRUD, con borrado lógico mediante el campo `FechaBaja`.
+Sistema de gestión de escritorio desarrollado en **C# (.NET / Windows Forms)** que permite administrar animales, razas y mascotas con un CRUD completo. El proyecto demuestra dos enfoques de acceso a datos: **ADO.NET clásico** y **DataSet tipado**, aplicando una arquitectura de N‑Capas.
 
 ---
 
 ## 📸 Capturas de pantalla
 
-### Menú principal
+**Menú principal**  
+<img src="https://github.com/user-attachments/assets/b18a3ede-cd54-4c59-9ea9-c2e08076561d" width="500" />
 
-<img width="633" height="468" alt="2" src="https://github.com/user-attachments/assets/b18a3ede-cd54-4c59-9ea9-c2e08076561d" />
+**Gestión de Animales**  
+<img src="https://github.com/user-attachments/assets/dd697c9b-9ca5-4b4f-95e2-04149d064056" width="500" />
 
-### Gestión de Animales
+**Gestión de Razas**  
+<img src="https://github.com/user-attachments/assets/0e339ffe-4552-4386-a477-48cfcc54fb0a" width="500" />
 
-<img width="730" height="616" alt="3" src="https://github.com/user-attachments/assets/dd697c9b-9ca5-4b4f-95e2-04149d064056" />
+**Gestión de Mascotas**  
+<img src="https://github.com/user-attachments/assets/e185510f-20cb-4a57-b5e5-6aecf0444426" width="500" />
 
-### Gestión de Razas
-
-<img width="732" height="617" alt="4" src="https://github.com/user-attachments/assets/0e339ffe-4552-4386-a477-48cfcc54fb0a" />
-
-### Gestión de Mascotas
-
-<img width="858" height="615" alt="5" src="https://github.com/user-attachments/assets/e185510f-20cb-4a57-b5e5-6aecf0444426" />
-<img width="849" height="611" alt="6" src="https://github.com/user-attachments/assets/47f57903-04ee-409b-968d-722ed19953da" />
-
-### Explorador de soluciones
-
-<img width="321" height="749" alt="1" src="https://github.com/user-attachments/assets/b81a2c03-c0d2-4a62-ac8d-ec252286256e" />
+**Gestión de Mascotas (con un elemento seleccionado)**  
+<img src="https://github.com/user-attachments/assets/47f57903-04ee-409b-968d-722ed19953da" width="500" />
 
 ---
 
-## ▶️ Ejecución
+## 📁 Estructura del proyecto
 
-1. Ejecutar script de la base de datos en SQL Server
-2. Verificar la cadena de conexión en la clase `CadenaConexion`
-3. Abrir la solución en Visual Studio
-4. Ejecutar cualquiera de los proyectos:
+```
+└── tobiascrocus-administrador-mascotas/
+    ├── README.md
+    ├── database/
+    │   └── Script_Administrador_Mascotas.sql
+    └── src/
+        ├── Administrador de Mascotas.sln
+        ├── Biblioteca De Clases IEFI/
+        │   ├── Animal.cs
+        │   ├── Biblioteca De Clases.csproj
+        │   ├── CadenaConexion.cs
+        │   ├── Mascota.cs
+        │   ├── Raza.cs
+        │   └── Properties/
+        │       └── AssemblyInfo.cs
+        ├── IEFI Mascotas/
+        │   ├── 1 - Menu.cs
+        │   ├── 1 - Menu.Designer.cs
+        │   ├── 1 - Menu.resx
+        │   ├── 2 - Animales.cs
+        │   ├── 2 - Animales.Designer.cs
+        │   ├── 2 - Animales.resx
+        │   ├── 3 - Razas.cs
+        │   ├── 3 - Razas.Designer.cs
+        │   ├── 3 - Razas.resx
+        │   ├── 4 - Mascotas.cs
+        │   ├── 4 - Mascotas.Designer.cs
+        │   ├── 4 - Mascotas.resx
+        │   ├── App.config
+        │   ├── Mascotas.csproj
+        │   ├── Program.cs
+        │   └── Properties/
+        │       ├── AssemblyInfo.cs
+        │       ├── Resources.Designer.cs
+        │       ├── Resources.resx
+        │       ├── Settings.Designer.cs
+        │       └── Settings.settings
+        └── IEFI Mascotas DS/
+            ├── 1 - Menu.cs
+            ├── 1 - Menu.Designer.cs
+            ├── 1 - Menu.resx
+            ├── 2 - Animales.cs
+            ├── 2 - Animales.Designer.cs
+            ├── 2 - Animales.resx
+            ├── 3 - Razas.cs
+            ├── 3 - Razas.Designer.cs
+            ├── 3 - Razas.resx
+            ├── 4 - Mascotas.cs
+            ├── 4 - Mascotas.Designer.cs
+            ├── 4 - Mascotas.resx
+            ├── App.config
+            ├── IEFI_MascotasDataSet.Designer.cs
+            ├── IEFI_MascotasDataSet.xsc
+            ├── IEFI_MascotasDataSet.xsd
+            ├── IEFI_MascotasDataSet.xss
+            ├── Mascotas DS.csproj
+            ├── Program.cs
+            └── Properties/
+                ├── AssemblyInfo.cs
+                ├── Resources.Designer.cs
+                ├── Resources.resx
+                ├── Settings.Designer.cs
+                └── Settings.settings
+```
 
-   * `Mascotas`
-   * `Mascotas DS`
+---
+
+## 🏗️ Arquitectura del proyecto
+
+La solución está dividida en **tres proyectos** que separan la lógica de negocio, el acceso a datos y la interfaz de usuario:
+
+- **Biblioteca De Clases IEFI** – Capa de acceso a datos (DAL) y entidades.
+- **IEFI Mascotas** – UI con ADO.NET clásico (`SqlConnection`, `SqlCommand`).
+- **IEFI Mascotas DS** – UI con DataSet tipado y TableAdapters.
+
+Ambas aplicaciones consumen la misma biblioteca de clases y resuelven el mismo problema con enfoques distintos, demostrando flexibilidad en el acceso a datos.
+
+---
+
+## 🗄️ Modelo de datos y persistencia
+
+**Motor:** SQL Server  
+**Tipo:** Relacional con borrado lógico (`FechaBaja`)
+
+| Entidad | Descripción |
+| :--- | :--- |
+| **Animal** | Define el tipo de animal (ej. Perro, Gato). |
+| **Raza** | Clasifica a los animales según su estirpe (relacionado con Animal). |
+| **Mascota** | Registro individual con nombre, apodo y dueño (relacionado con Raza). |
+
+### Componentes de base de datos utilizados
+
+- **Procedimientos almacenados** – Para operaciones de inserción, modificación y eliminación lógica.
+- **Vistas** – Para consultas optimizadas que combinan múltiples tablas.
+- **Baja lógica** – Se preserva la integridad histórica mediante el campo `FechaBaja`.
+
+---
+
+## ✨ Funcionalidades
+
+- **CRUD completo** para Animales, Razas y Mascotas.
+- **Búsquedas** por nombre o dueño.
+- **Arquitectura desacoplada** – La lógica de negocio está centralizada en una DLL independiente.
+- **Doble implementación** – Ejemplo práctico de `SqlDataReader` vs `DataSet`.
+
+---
+
+## 🛠️ Tecnologías utilizadas
+
+- **Lenguaje:** C#
+- **Framework:** .NET Framework 4.8
+- **Interfaz:** Windows Forms (WinForms)
+- **Base de datos:** SQL Server
+- **Acceso a datos:** ADO.NET (SqlClient)
+
+---
+
+## 🚀 Configuración e instalación
+
+### Requisitos previos
+- Visual Studio 2022 (o superior)
+- SQL Server Express / LocalDB / Developer Edition
+
+### 1. Base de datos
+Ejecutá el script `database/Script_Administrador_Mascotas.sql` en tu instancia de SQL Server.  
+Esto creará la base de datos `IEFI Mascotas`, tablas, vistas y procedimientos almacenados.
+
+### 2. Conexión
+Verificá la cadena de conexión en `src/Biblioteca De Clases IEFI/CadenaConexion.cs`.  
+Por defecto apunta a `Data Source=.;Initial Catalog=IEFI Mascotas;Integrated Security=true;`.
+
+### 3. Ejecución
+1. Abrí la solución `src/Administrador de Mascotas.sln` en Visual Studio.
+2. Elegí como proyecto de inicio:
+   - `IEFI Mascotas` (ADO.NET clásico)
+   - `IEFI Mascotas DS` (DataSet tipado)
+3. Presioná `F5`.
 
 ---
 
 ## 📝 Notas
 
-* Proyecto desarrollado con fines académicos y de práctica.
-* Se incluye para demostrar manejo de C#, SQL Server y acceso a datos.
+- Proyecto desarrollado con fines académicos y de práctica.
